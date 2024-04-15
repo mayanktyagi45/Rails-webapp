@@ -1,0 +1,58 @@
+require:
+  - rubocop-rails
+
+Rails:
+  Enabled: true
+
+AllCops:
+  DisplayCopNames: true
+  TargetRubyVersion: 3.1
+  TargetRailsVersion: 6.1
+  NewCops: enable
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+    - 'lib/demo_data/*'
+    - 'lib/live_data/*'
+    - 'app/lib/active_support_buffered_logger.rb'
+    - 'app/lib/patches/capybara_selenium_driver.rb'
+    - 'lib/tasks/*.rake'
+    - 'node_modules/**/*'
+    - 'script/**/*'
+    - 'vendor/**/*'
+    - 'spec/dummy/**/*'
+    - 'test/**/*'
+
+# Disabling this because it's currently broken, reporting false positives.
+Layout/EmptyLinesAroundArguments:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 100
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+# Exclude Rspec specs because we can easily have more than 3 levels of nesting
+# of describe, context, and it blocks.
+Metrics/BlockNesting:
+  Exclude:
+    - 'spec/**/*'
+
+Naming/PredicateName:
+  ForbiddenPrefixes:
+    - is_
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+Style/AccessModifierDeclarations:
+  EnforcedStyle: inline
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
